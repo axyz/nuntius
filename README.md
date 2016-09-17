@@ -10,7 +10,7 @@ Nuntius is available as an UMD module on npm.
 `$ npm install --save nuntius`
 
 To create a new entity use the provided constructor:
-```
+```javascript
 import Nuntius from 'nuntius';
 
 const messenger = new Nuntius(bus, name, options);
@@ -26,7 +26,7 @@ where `bus` should be an event bus instance that implements at least these metho
 Nuntius is battle tested and used in prouction with [happened](https://github.com/grassator/happened), but it should work correctly with any event-bus implementation (also basic node EventEmitter).
 
 If your event bus uses different name for these core functions you can override the names in the options.
-```
+```javascript
 const messenger = new Nuntius(myBus, 'messenger', {
   onFunction: 'listen',
   offFunction: 'forget',
@@ -39,7 +39,7 @@ const messenger = new Nuntius(myBus, 'messenger', {
 `listen(event: string, callback: function({ data: any }))`
 will subscribe to a specific message type.
 
-```
+```javascript
 const messenger = new Nuntius(bus, 'messenger');
 
 messenger.listen('hello', (data, done) => {
@@ -55,7 +55,7 @@ You can also have your own logic to decide to calling it or not (e.g. you may ha
 `send(event: string, target: string, data: any, fallback: function, options)`
 will send a message(`event`) to the `target` entity with `data` as the payload.
 
-```
+```javascript
 const entity = new Nuntius(bus, 'entity');
 
 entity.send('hello', 'messenger', { name: 'Andrea' }, () => {
@@ -71,7 +71,7 @@ A fallback function is also provided in the case the other entity do not exist o
 By default Nuntius will try to send the message every 100ms until it get handled correctly by the target entity. After a timeout of 5s it stops trying and executes the fallback function.
 
 These default values can be overridden both on the entity constructor:
-```
+```javascript
 const messenger = new Nuntius(myBus, 'messenger', {
   interval: 50, // retry interval in ms
   timeout: 1000, // timeout in ms
@@ -79,7 +79,7 @@ const messenger = new Nuntius(myBus, 'messenger', {
 ```
 
 or for a specific send:
-```
+```javascript
 entity.send('hello', 'messenger', { name: 'Andrea' }, () => {
   // fallback function
   console.log('sorry it was not possible to deliver the message');
@@ -104,7 +104,7 @@ Basically when an Entity gets created it will immediately subscribe to the `enti
 Under the hood Nuntius makes sure that messages are handled only once and that fallback are executed only after real failures.
 
 Note that Nuntius will not break the compatibility with your event bus: if you want you can directly send events from the bus:
-```
+```javascript
 bus.trigger('messenger:hello',  { name: 'Andrea' })
 ```
 
