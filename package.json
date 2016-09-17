@@ -1,6 +1,6 @@
 {
   "name": "nuntius",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Reliable messaging protocol on top of any client-side JavaScript event bus",
   "main": "dist/nuntius.js",
   "scripts": {
