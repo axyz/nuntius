@@ -1,0 +1,17 @@
+{
+    "extends": "eslint-config-airbnb",
+    "parser": "babel-eslint",
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "es6": true,
+            "experimentalObjectRestSpread": true,
+            "jsx": true,
+            "modules": true,
+            "classes": true
+        }
+    }
+}
