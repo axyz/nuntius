@@ -1,6 +1,6 @@
 {
   "name": "nuntius",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Reliable messaging protocol on top of any client-side JavaScript event bus",
   "main": "dist/nuntius.js",
   "scripts": {
@@ -25,6 +25,7 @@
     "eslint-plugin-import": "^1.15.0",
     "eslint-plugin-jsx-a11y": "2.2.2",
     "eslint-plugin-react": "6.2.2",
+    "happened": "1.0.0",
     "nyc": "8.3.0",
     "sinon": "1.17.5",
     "webpack": "1.13.2"
