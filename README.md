@@ -67,7 +67,7 @@ entity.send('hello', 'messenger', { name: 'Andrea' }, () => {
 In this example we are sending a `hello` message to the `messenger` entity and our name as a payload.
 A fallback function is also provided in the case the other entity do not exist or do not listen on that message type, or whatever possible reason for the message not to be delivered.
 
-## Custom retry interval an timeout
+## Custom retry interval and timeout
 By default Nuntius will try to send the message every 100ms until it get handled correctly by the target entity. After a timeout of 5s it stops trying and executes the fallback function.
 
 These default values can be overridden both on the entity constructor:
