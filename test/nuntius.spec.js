@@ -77,3 +77,24 @@ test.cb('when receiving a pong, the event should be sent', (t) => {
 
   messenger.send('event', 'target', 'DATA', fallback);
 });
+
+test.cb('should listen to event with no data', (t) => {
+  const { messenger, bus } = getNuntiusInstance('test');
+
+    messenger.listen('event', (data) => {
+      t.end(false);
+    });
+
+    bus.trigger('test:event');
+});
+
+test.cb('should broadcast events correctly', (t) => {
+  const { messenger, bus } = getNuntiusInstance('test');
+
+    bus.on('event', (msg) => {
+      t.is(msg, 'DATA');
+      t.end(false, msg);
+    });
+
+    messenger.broadcast('event', 'DATA');
+});
